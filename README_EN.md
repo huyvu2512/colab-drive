@@ -27,7 +27,7 @@
 ## Introduction
 **Colab Drive** is an automated cloud download solution running on Google Colab, engineered to maximize transfer speeds from diverse Internet sources directly into your personal Google Drive without consuming local machine bandwidth or storage. Designed and developed by Huy Vu (@huyvu2512) with a focus on stream optimization, resilient task queue management, and deep integration of premium open-source download engines.
 
-Version **v2.1.0** features a modular architecture, an intelligent task queue that automatically reschedules stalled torrents, and auto-split capabilities for large files into dedicated folders. See [CHANGELOG.md](CHANGELOG.md) for full details.
+Version **v2.2.0** supports flexible splitting of files into 2, 4, 6, 8, or 10 equal parts stored in dedicated folders. See [CHANGELOG.md](CHANGELOG.md) for full details.
 
 ---
 
@@ -38,7 +38,7 @@ Version **v2.1.0** features a modular architecture, an intelligent task queue th
 - **Fault-Tolerant Torrent Rescheduling** - Monitors BitTorrent/Magnet progress; if no seeders are connected within 3 minutes (0 KB/s), the task is pushed to the back of the queue; dead links are automatically skipped without breaking execution.
 - **100% Quality Alignment between Step 3 & Step 4** - Choose Best, 4K, 2K, 1080p, 720p, 480p, or Audio Only (MP3 320kbps). Step 3 probes actual available streams and locks the configuration for Step 4.
 - **Cross-Platform Playlist Limiter** - Supports item range filtering (`1-10`, `1-5`, `all`) across 1,800+ websites and automatically creates dedicated playlist folders on Google Drive.
-- **Auto-Split Large Archives** - Splits files exceeding size thresholds (`1GB`, `2GB`, `4GB`) into multi-volume `.7z` archives and stores each inside its own dedicated folder.
+- **Flexible Equal-Parts Splitting** - Option to split files into 2, 4, 6, 8, or 10 equal `.7z` volumes and store each within its own subfolder.
 - **Real-Time Live Progress & ETA** - Real-time progress bar displaying percentage, transferred size, speed (MB/s), and estimated remaining time (ETA).
 - **Telegram Bot Notifications** - Automatically dispatches execution summaries detailing saved files, success/failure counts, and Google Drive destination paths.
 
@@ -79,7 +79,7 @@ colab-drive/
 │   │   └── parser.py         # Multi-delimiter URL extractor
 │   ├── storage/
 │   │   ├── drive_sync.py     # Drive transfer and smart file naming
-│   │   └── splitter.py       # Auto-split engine for large archives into dedicated folders
+│   │   └── splitter.py       # Auto-split engine (2, 4, 6, 8, 10 parts) into dedicated folders
 │   └── notifications/
 │       └── telegram.py       # Telegram Bot reporting module
 ├── CHANGELOG.md              # Version history
@@ -109,7 +109,7 @@ colab-drive/
 - System probes technical specs, validates actual resolutions, and prints a summary queue table.
 
 ### Step 4: Configure Storage & Execute Download
-- Set destination directory (`THU_MUC_DRIVE`), custom naming (`TEN_FILE_TU_DAT`), large file splitting (`CAT_TEP_DUNG_LUONG_LON`), and Telegram Bot credentials.
+- Set destination directory (`THU_MUC_DRIVE`), custom naming (`TEN_FILE_TU_DAT`), choose splitting into 2, 4, 6, 8, or 10 parts (`CAT_TEP_DUNG_LUONG_LON`), and Telegram Bot credentials.
 - Executes queue sequentially, transfers data into Google Drive, and cleans up local cache.
 
 ---
@@ -126,7 +126,7 @@ colab-drive/
 | `NOI_DUNG_COOKIE` | Step 3 | String | Cookies string or path to `cookies.txt` for 4K/VIP authorization. |
 | `THU_MUC_DRIVE` | Step 4 | String | Google Drive destination folder (default: `/content/drive/MyDrive/colab-drive`). |
 | `TEN_FILE_TU_DAT` | Step 4 | String | Custom file name (automatically appends correct extension and queue indices). |
-| `CAT_TEP_DUNG_LUONG_LON` | Step 4 | Select | Auto-split large files (1GB, 2GB, 4GB) into dedicated subfolders. |
+| `CAT_TEP_DUNG_LUONG_LON` | Step 4 | Select | Option to split files into 2, 4, 6, 8, or 10 equal parts (Khong cat, Chia thanh 2 phan...). |
 | `TELEGRAM_BOT_TOKEN` | Step 4 | String | Telegram Bot token for notifications. |
 | `TELEGRAM_CHAT_ID` | Step 4 | String | Telegram Chat ID for notifications. |
 

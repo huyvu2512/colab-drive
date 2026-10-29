@@ -1,5 +1,10 @@
 # Lịch sử thay đổi
 
+## v2.2.0 — 30/10/2026 01:42
+
+- **[pending]** Cải tiến tùy chọn cắt tệp (`CAT_TEP_DUNG_LUONG_LON`): Hỗ trợ chia đều tệp thành 2, 4, 6, 8 hoặc 10 phần trực quan và lưu trữ vào thư mục riêng biệt.
+- **[3bfdaf4](https://github.com/huyvu2512/colab-drive/commit/3bfdaf4)** Tinh giản phần giới thiệu đầu sổ tay `colab-drive.ipynb` thành phiên bản ngắn gọn, súc tích.
+
 ## v2.1.0 — 30/10/2026 01:35
 
 - **[d4cb6ec](https://github.com/huyvu2512/colab-drive/commit/d4cb6ec)** Tinh giản giao diện Bước 4: gỡ bỏ tùy chọn kiểm tra tệp tồn tại và tự động giải nén để tối ưu luồng chạy.
@@ -10,7 +15,6 @@
 - **[3f0673f](https://github.com/huyvu2512/colab-drive/commit/3f0673f)** Bổ sung bộ chọn chất lượng tải (`CHAT_LUONG_TAI`) đảm bảo khớp chuẩn 100% giữa Bước 3 và Bước 4.
 - **[3f0673f](https://github.com/huyvu2512/colab-drive/commit/3f0673f)** Hỗ trợ giới hạn tải Danh sách phát (`GIOI_HAN_PLAYLIST`) cho hơn 1.800 nền tảng trực tuyến.
 - **[3f0673f](https://github.com/huyvu2512/colab-drive/commit/3f0673f)** Bổ sung cơ chế timeout 3 phút cho BitTorrent/Magnet, tự động dời tác vụ nghẽn xuống cuối hàng chờ để thử lại sau.
-- **[3f0673f](https://github.com/huyvu2512/colab-drive/commit/3f0673f)** Bổ sung tính năng tự động chia nhỏ tệp lớn (`CAT_TEP_DUNG_LUONG_LON`) vào thư mục riêng biệt trên Google Drive.
 
 ## v1.1.0 — 30/10/2026 01:14
 
