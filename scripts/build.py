@@ -17,7 +17,7 @@ notebook = {
 
 # 1. Header Markdown Cell
 header_md = """# Colab Drive
-Hệ thống tải đa nguồn tốc độ cao và đồng bộ trực tiếp vào Google Drive.
+Tự động hóa tải và đồng bộ tệp tin đa nguồn vào Google Drive trên nền tảng Google Colab.
 
 - Hỗ trợ đa nguồn: YouTube, TikTok, Facebook, Google Drive, MEGA, BitTorrent/Magnet, Direct Link...
 - Tự động hóa: Hàng chờ tác vụ, chọn chất lượng (4K, 1080p, MP3), chia nhỏ tệp lớn và chống ngắt kết nối.

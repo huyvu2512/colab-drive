@@ -2,14 +2,14 @@
 
 # Colab Drive
 
-**Automated Multi-Source Downloader & Direct Google Drive Synchronizer on Google Colab**
+**Automate multi-source downloading and synchronizing files to Google Drive on Google Colab**
 
 [Tiếng Việt](README.md) · [English](README_EN.md)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/huyvu2512/colab-drive/blob/main/colab-drive.ipynb)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB)](https://www.python.org/)
 [![Deno](https://img.shields.io/badge/Deno-JS%20Runtime-black)](https://deno.land/)
-[![Version](https://img.shields.io/badge/Version-v2.2.2-red)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-v2.2.3-red)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![yt-dlp](https://img.shields.io/badge/Engine-yt--dlp-red)](https://github.com/yt-dlp/yt-dlp)
 [![aria2](https://img.shields.io/badge/Engine-aria2-blue)](https://github.com/aria2/aria2)

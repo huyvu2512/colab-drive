@@ -1,5 +1,9 @@
 # Lịch sử thay đổi
 
+## v2.2.3 — 30/10/2026 02:05
+
+- Tinh giản tiêu đề mô tả chính của dự án thành câu hành động trực diện và nâng cấp v2.2.3.
+
 ## v2.2.2 — 30/10/2026 01:55
 
 - **[7b576d8](https://github.com/huyvu2512/colab-drive/commit/7b576d85c64c406be08ec8c5e6fa7edce64a6df3)** Thiết lập tài liệu phát triển AGENTS.md bằng tiếng Anh và chuẩn hóa Semantic Versioning.
