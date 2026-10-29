@@ -1,5 +1,10 @@
 # Lịch sử thay đổi
 
+## v2.2.2 — 30/10/2026 01:55
+
+- Thiết lập tài liệu quy tắc phát triển AGENTS.md tiếng Anh và chuẩn hóa Semantic Versioning.
+- Tinh chỉnh scripts/build.py độc lập, bổ sung constants.py và huy hiệu phiên bản v2.2.2.
+
 ## v2.2.1 — 30/10/2026 01:45
 
 - **[2969efd](https://github.com/huyvu2512/colab-drive/commit/2969efd94c8d9acf779ab57608818d5de91dafcf)** Tinh chỉnh tên chất lượng 'Cao nhat (Tu dong)' và để trống giới hạn playlist mặc định tải toàn bộ.
