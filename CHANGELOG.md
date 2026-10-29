@@ -2,7 +2,7 @@
 
 ## v2.2.3 — 30/10/2026 02:05
 
-- Tinh giản tiêu đề mô tả chính của dự án thành câu hành động trực diện và nâng cấp v2.2.3.
+- **[c858b2b](https://github.com/huyvu2512/colab-drive/commit/c858b2b7f9759a0973b9d1af8330eb6128351d66)** Tinh giản tiêu đề mô tả chính của dự án thành câu hành động trực diện.
 
 ## v2.2.2 — 30/10/2026 01:55
 
