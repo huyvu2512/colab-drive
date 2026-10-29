@@ -14,6 +14,7 @@ Dự án được xây dựng với tiêu chí tối giản trong cấu trúc, t
 
 - **Hỗ trợ đa nguồn toàn diện:** Tương thích với hơn 1.800 nền tảng trực tuyến (YouTube, Facebook, TikTok, Douyin, Bilibili, OK.ru, VK, Vimeo, Twitch,...), các luồng phát trực tiếp HLS (`.m3u8`), DASH (`.mpd`), liên kết tải trực tiếp (`.mp4`, `.mkv`, `.iso`, `.zip`,...) và giao thức chia sẻ tệp BitTorrent/Magnet link.
 - **Tự động tăng tốc truyền tải:** Mặc định kích hoạt bộ tăng tốc `aria2c` đa luồng (16 kết nối song song) kết hợp `yt-dlp`. Tự động chuyển đổi cơ chế sang native hoặc tải trực tiếp khi phát hiện máy chủ đích có giới hạn kết nối mà không cần người dùng can thiệp thủ công.
+- **Tự động gán đuôi tệp thông minh:** Khi đặt tên tệp tùy biến (ví dụ `name123`), hệ thống tự động nhận diện và gán đúng phần mở rộng gốc của tệp (`.mp4`, `.mpd`, `.mkv`, `.ts`,...) mà người dùng không cần gõ đuôi tệp.
 - **Định tuyến máy chủ ủy danh (Proxy):** Hỗ trợ danh sách proxy HTTP/HTTPS/SOCKS5 (có hoặc không có xác thực) giúp vượt qua các rào cản chặn địa lý (Geo-Block) và giới hạn IP.
 - **Tùy biến tiêu đề mạng:** Thiết lập `User-Agent` hiện đại và hỗ trợ nhập `Referer`/`Origin` tùy chỉnh để xử lý các liên kết bảo vệ chống tải trái phép (HTTP 403 Forbidden).
 - **Cơ chế dự phòng đa tầng (Auto Fallback):** Tự động điều chỉnh linh hoạt giữa các chế độ ghép kênh, format tương thích và tải trực tiếp khi xảy ra lỗi mạng hoặc luồng stream phức tạp.
@@ -33,11 +34,11 @@ Chạy ô **Bước 2** và cấp quyền kết nối với phân vùng lưu tr�
 
 ### Bước 4: Tải xuống và đồng bộ dữ liệu
 Thiết lập các tham số đầu vào tại biểu mẫu ở **Bước 3**:
-- `URL_INPUT`: Danh sách một hoặc nhiều liên kết cần tải (ngăn cách bằng dấu xuống dòng hoặc dấu phẩy).
-- `DRIVE_FOLDER`: Đường dẫn thư mục lưu trữ đích trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`).
-- `CUSTOM_FILENAME`: Đặt tên tệp tùy biến (để trống nếu muốn giữ nguyên tên gốc của tệp/video).
-- `PROXY_LIST`: Danh sách địa chỉ proxy (định dạng `IP:PORT:USER:PASS` hoặc `protocol://...`) nếu cần vượt tường lửa/chặn vùng.
-- `CUSTOM_REFERER`: Tiêu đề `Referer` tùy biến cho các luồng stream yêu cầu nguồn tham chiếu.
+- `LINK_CAN_TAI`: Dán 1 hoặc nhiều liên kết cần tải (ngăn cách bằng dấu xuống dòng hoặc dấu phẩy).
+- `THU_MUC_DRIVE`: Đường dẫn thư mục lưu trữ đích trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`).
+- `TEN_FILE_TU_DAT`: Đặt tên tệp tùy biến (ví dụ `name123`, hệ thống sẽ tự động gán đuôi định dạng gốc như `.mp4`, `.mpd`...). Để trống nếu muốn giữ nguyên tên gốc của video/tệp.
+- `DANH_SACH_PROXY`: Danh sách địa chỉ proxy (định dạng `IP:PORT:USER:PASS` hoặc `protocol://...`) nếu cần vượt tường lửa/chặn vùng.
+- `REFERER_VUOT_CHAN`: Tiêu đề `Referer` nguồn trang web gốc để vượt lỗi chặn tải 403 Forbidden.
 
 Nhấn nút thực thi để tiến trình tự động tải và chuyển giao tệp vào Google Drive.
 
