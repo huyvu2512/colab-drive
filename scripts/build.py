@@ -22,22 +22,7 @@ notebook = {
     'cells': []
 }
 
-header_md = """# Colab Drive
-Hệ thống tự động hóa tải và đồng bộ tệp tin đa nguồn vào Google Drive trên nền tảng Google Colab.
-
-Các tính năng nổi bật được tích hợp:
-- Đa công cụ chuyên dụng: yt-dlp, Deno JS runtime (chống 403 Forbidden), aria2c (Direct link & Torrent P2P), gdown (Google Drive tệp/thư mục), megatools (MEGA cloud), 7z/unrar.
-- Quản lý hàng chờ thông minh (Task Queue): Tự động phân tách hàng loạt link, kiểm tra trước thông số, tự động dời link torrent bị nghẽn (timeout 3 phút) xuống cuối hàng chờ để thử lại sau, tự động bỏ qua (skip) link lỗi mà không làm gián đoạn tiến trình.
-- Chọn chất lượng chuẩn xác 100%: Hỗ trợ chọn tự động cao nhất, 4K, 2K, 1080p, 720p hoặc chỉ trích xuất âm thanh (Audio MP3 320kbps). Bước 3 chuẩn đoán chính xác định dạng sẽ được tải ở Bước 4.
-- Hỗ trợ Danh sách phát đa nền tảng (Playlist): Hỗ trợ giới hạn số lượng tập (VD: 1-10, 1-5, tat_ca) và tự động tạo thư mục riêng cho danh sách phát trên Google Drive.
-- Tự động bỏ qua tệp đã có (Skip Existing): Kiểm tra thư mục Google Drive trước khi tải, nếu đã có tệp hoàn chỉnh thì tự động bỏ qua để tiết kiệm thời gian và băng thông.
-- Chia nhỏ tệp lớn (Auto-Split Archive): Tự động chia nhỏ tệp có dung lượng lớn (1GB, 2GB, 4GB) thành các phần nén và lưu riêng biệt vào từng thư mục con để không bị lẫn lộn các tệp trong hàng chờ.
-
-Quy trình vận hành 4 bước chuẩn hóa:
-- Bước 1: Thiết lập môi trường, cài đặt công cụ chuyên dụng, Deno JS runtime và kích hoạt Anti-Disconnect.
-- Bước 2: Xác thực và kết nối Google Drive, kiểm tra bộ đệm máy ảo Colab.
-- Bước 3: Nhập liên kết, chọn chất lượng/playlist và kiểm tra trước thông số hàng chờ.
-- Bước 4: Cấu hình lưu trữ, thực thi hàng chờ tải xuống và đồng bộ lên Google Drive."""
+header_md = make_notebook.header_md
 
 notebook['cells'].append({
     'cell_type': 'markdown',
