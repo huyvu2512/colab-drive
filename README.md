@@ -29,10 +29,7 @@ Hệ thống tự động nhận diện nguồn liên kết (URL Routing) để 
    - Hỗ trợ tải trọn bộ hoặc giới hạn số tập (ví dụ: `1-10`, `1-5`, `tat_ca`).
    - Tự động tạo thư mục con riêng biệt theo tên Playlist trên Google Drive để gom tệp gọn gàng.
 
-4. **Tự động bỏ qua tệp đã có (Skip Existing):**
-   - Kiểm tra thư mục đích trên Google Drive trước khi tải. Nếu tệp hoàn chỉnh đã tồn tại, hệ thống tự động bỏ qua để tiết kiệm thời gian và tài nguyên.
-
-5. **Chia nhỏ tệp lớn (Auto-Split Archive) vào thư mục riêng:**
+4. **Chia nhỏ tệp lớn (Auto-Split Archive) vào thư mục riêng:**
    - Tự động chia nhỏ tệp vượt ngưỡng (`1GB`, `2GB`, `4GB`) thành các phần nén `.7z` và lưu trữ riêng biệt vào từng thư mục con mang tên tệp, chống lẫn lộn dữ liệu giữa các tác vụ trong hàng chờ.
 
 ## Quy trình 4 bước chuẩn hóa
@@ -50,8 +47,8 @@ Hệ thống tự động nhận diện nguồn liên kết (URL Routing) để 
    - Quét trước siêu dữ liệu, đối soát độ phân giải khả dụng và in bảng tổng kết hàng chờ sẵn sàng tải.
 
 4. **Bước 4: Cấu hình lưu trữ và tiến hành tải xuống**
-   - Thiết lập thư mục Drive, đặt tên tùy biến, bật/tắt bỏ qua tệp đã có, tùy chọn chia nhỏ tệp lớn.
-   - Thực thi hàng chờ tải xuống tuần tự, giải nén tự động và chuyển giao an toàn vào Google Drive.
+   - Thiết lập thư mục Drive, đặt tên tùy biến, tùy chọn chia nhỏ tệp lớn.
+   - Thực thi hàng chờ tải xuống tuần tự và chuyển giao an toàn vào Google Drive.
 
 ## Tham số cấu hình
 
@@ -65,9 +62,7 @@ Hệ thống tự động nhận diện nguồn liên kết (URL Routing) để 
 | `NOI_DUNG_COOKIE` | Bước 3 | Dán chuỗi cookies hoặc đường dẫn tệp `cookies.txt` để mở khóa tải 4K/VIP. |
 | `THU_MUC_DRIVE` | Bước 4 | Thư mục đích lưu trữ trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`). |
 | `TEN_FILE_TU_DAT` | Bước 4 | Đặt tên tệp tùy ý (hệ thống tự động gán đuôi và đánh số thứ tự theo hàng chờ). |
-| `BO_QUA_TEP_DA_CO` | Bước 4 | Tự động bỏ qua tải lại nếu tệp đã tồn tại đầy đủ trên Google Drive. |
 | `CAT_TEP_DUNG_LUONG_LON` | Bước 4 | Tự động chia nhỏ tệp lớn (1GB, 2GB, 4GB) và lưu vào thư mục riêng. |
-| `TU_DONG_GIAI_NEN` | Bước 4 | Tự động giải nén các tệp nén đa định dạng trên đám mây trước khi chuyển vào Drive. |
 | `TELEGRAM_BOT_TOKEN` | Bước 4 | Mã token bot Telegram nhận thông báo báo cáo kết quả. |
 | `TELEGRAM_CHAT_ID` | Bước 4 | Mã ID chat Telegram nhận tin nhắn. |
 
@@ -75,8 +70,12 @@ Hệ thống tự động nhận diện nguồn liên kết (URL Routing) để 
 
 ```text
 colab-drive/
+├── scripts/
+│   └── build.py         # Script tự động biên dịch và đóng gói src/ thành colab-drive.ipynb
+├── src/                 # Toàn bộ mã nguồn module hóa (core, engines, queue, storage, notifications)
 ├── colab-drive.ipynb    # Sổ tay Jupyter chính thực thi trên Google Colab
 ├── README.md            # Tài liệu hướng dẫn sử dụng và thông số kỹ thuật
+├── CHANGELOG.md         # Nhật ký các phiên bản nâng cấp
 ├── LICENSE              # Giấy phép phần mềm mã nguồn mở MIT
 └── .gitignore           # Danh mục loại trừ tệp tin hệ thống
 ```
