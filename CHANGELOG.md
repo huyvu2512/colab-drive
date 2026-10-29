@@ -2,8 +2,7 @@
 
 ## v2.2.4 — 30/10/2026 02:15
 
-- Bổ sung ảnh xem trước giao diện trực quan `assets/preview.png` vào tài liệu README.
-- Loại bỏ tệp cấu hình không cần thiết `.gitignore` để tinh gọn dự án.
+- **[3d41c79](https://github.com/huyvu2512/colab-drive/commit/3d41c79f09fd814ecb6aa9dfc4f1c78a3db18f0f)** Bổ sung ảnh xem trước giao diện ssets/preview.png và loại bỏ tệp .gitignore.
 
 ## v2.2.3 — 30/10/2026 02:05
 
