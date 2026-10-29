@@ -1,62 +1,57 @@
-<div align="center">
+# colab-drive
 
-# 🚀 ColabDrive Downloader & Merger
+Hệ thống tự động hóa tải và đồng bộ tệp tin đa nguồn vào Google Drive trên nền tảng Google Colab.
 
-**Công cụ đa năng tải video từ mọi nguồn (Drive, YouTube, OK.ru, VK, Facebook, TikTok, Torrent/Magnet, m3u8, mpd) trực tiếp vào Google Drive và hỗ trợ ghép nối video/phân mảnh tốc độ cao bằng Google Colab.**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/huyvu2512/colab-drive/blob/main/colab-drive.ipynb)
 
-![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
-![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)
-![yt-dlp](https://img.shields.io/badge/yt--dlp-FF0000?logo=youtube&logoColor=white)
-![ffmpeg](https://img.shields.io/badge/FFmpeg-007800?logo=ffmpeg&logoColor=white)
+## Tổng quan
 
-🌐 **[Mở trong Colab](https://colab.research.google.com/github/huyvu2512/ColabDrive_Downloader/blob/main/ColabDrive_Downloader.ipynb)** · 📦 **[GitHub](https://github.com/huyvu2512/ColabDrive_Downloader)**
+**colab-drive** là giải pháp thực thi trên nền tảng Google Colab nhằm tối ưu hóa tốc độ tải xuống và đồng bộ trực tiếp dữ liệu đa phương tiện từ Internet vào Google Drive của người dùng mà không làm tiêu tốn băng thông máy trạm cá nhân.
 
-</div>
+Dự án được xây dựng với tiêu chí tối giản trong cấu trúc, độ tin cậy cao trong quá trình truyền tải, hỗ trợ vượt các cơ chế hạn chế mạng và tích hợp hệ thống nhật ký (log) chuyên nghiệp theo phong cách DevOps/CLI.
 
----
+## Tính năng chính
 
-## ✨ Tính năng nổi bật
+- **Hỗ trợ đa nguồn toàn diện:** Tương thích với hơn 1.800 nền tảng trực tuyến (YouTube, Facebook, TikTok, Douyin, Bilibili, OK.ru, VK, Vimeo, Twitch,...), các luồng phát trực tiếp HLS (`.m3u8`), DASH (`.mpd`), liên kết tải trực tiếp (`.mp4`, `.mkv`, `.iso`, `.zip`,...) và giao thức chia sẻ tệp BitTorrent/Magnet link.
+- **Tăng tốc độ truyền tải:** Tích hợp công cụ `aria2c` đa luồng (lên tới 16 kết nối song song) kết hợp bộ giải mã `yt-dlp` cập nhật mới nhất.
+- **Định tuyến máy chủ ủy danh (Proxy):** Hỗ trợ danh sách proxy HTTP/HTTPS/SOCKS5 (có hoặc không có xác thực) giúp vượt qua các rào cản chặn địa lý (Geo-Block) và giới hạn IP.
+- **Tùy biến tiêu đề mạng:** Thiết lập `User-Agent` hiện đại và hỗ trợ nhập `Referer`/`Origin` tùy chỉnh để xử lý các liên kết bảo vệ chống tải trái phép (HTTP 403 Forbidden).
+- **Cơ chế dự phòng 3 tầng (Fallback):** Tự động chuyển đổi từ định dạng chất lượng cao ghép kênh (`bestvideo*+bestaudio/best`) sang chế độ tương thích (`best`), và tự động chuyển giao cho `aria2c` tải trực tiếp nếu stream bị lỗi.
+- **Đồng bộ hóa Google Drive:** Tự động di chuyển dữ liệu vào thư mục chỉ định trên Google Drive, có thuật toán chống ghi đè tệp trùng tên.
+- **Hệ thống nhật ký chuẩn mực:** Toàn bộ thông tin thực thi được hiển thị với dấu thời gian (Timestamp `HH:MM:SS`), mã định danh phân hệ rõ ràng và màu sắc ANSI chuyên nghiệp, không sử dụng biểu tượng cảm xúc.
 
-| Tính năng | Mô tả |
-|---|---|
-| 🌍 **Tải video đa nguồn** | Hỗ trợ YouTube, Facebook, TikTok, OK.ru, VK, **Link Torrent/Magnet**, direct link `.mp4`, luồng trực tiếp `.m3u8` và `.mpd`. |
-| 🚀 **Tốc độ cực nhanh** | Tải và đồng bộ trực tiếp lên Google Drive qua băng thông siêu tốc của máy chủ Google (Lên tới 50-100MB/s). |
-| 💾 **Đồng bộ Google Drive** | Lưu trữ trực tiếp vào Drive cá nhân để tránh mất dữ liệu khi ngắt kết nối Colab. |
-| 🧩 **Tải & Ghép phân mảnh (.m4s, .ts...)** | Tải song song đa luồng các phân mảnh video từ link trần, tự động gộp nhị phân và remux bằng FFmpeg để sửa lỗi timeline giúp tua mượt mà. |
-| 📺 **Quay ngược thời gian Live IPTV (Catchup)** | Tự động tính toán múi giờ và chèn tham số quay ngược thời gian (như `startTime`/`stopTime` của Seenow/VTV Prime) để tải lại các chương trình đã phát sóng trước đó. |
-| 🎬 **Ghép nhiều video sẵn có** | Hỗ trợ ghép hàng loạt video trong thư mục hoặc theo danh sách chỉ định với 2 chế độ: **Ghép siêu tốc (copy stream)** hoặc **Ghép chất lượng (re-encode sang 1080p)**. |
-| 🎨 **Giao diện thân thiện** | Giao diện Form gọn gàng, Việt hóa 100%, ẩn code phức tạp. |
+## Hướng dẫn vận hành
 
----
+### Bước 1: Mở sổ tay trên Google Colab
+Nhấn vào liên kết [Mở trên Google Colab](https://colab.research.google.com/github/huyvu2512/colab-drive/blob/main/colab-drive.ipynb) hoặc tải tệp `colab-drive.ipynb` lên Google Colab của bạn.
 
-## 🖥️ Hướng dẫn sử dụng nhanh
+### Bước 2: Thiết lập môi trường và cài đặt phụ thuộc
+Chạy ô **Bước 1** để hệ thống tự động kiểm tra và cài đặt phiên bản mới nhất của `yt-dlp`, `aria2c` và `ffmpeg`.
 
-> **Chạy ngay trên trình duyệt:** [👉 BẤM VÀO ĐÂY ĐỂ MỞ TRÊN GOOGLE COLAB](https://colab.research.google.com/github/huyvu2512/ColabDrive_Downloader/blob/main/ColabDrive_Downloader.ipynb)
+### Bước 3: Xác thực và kết nối Google Drive
+Chạy ô **Bước 2** và cấp quyền kết nối với phân vùng lưu trữ Google Drive cá nhân (`/content/drive/MyDrive/`).
 
-### Các bước thực hiện:
-1. **Mở Colab:** Bấm vào link trên hoặc tải tệp `.ipynb` lên sổ tay Google Colab của bạn.
-2. **Cài đặt thư viện:** Chạy **Bước 1** để chuẩn bị môi trường (`yt-dlp`, `ffmpeg`, `aria2`).
-3. **Kết nối Google Drive:** Chạy **Bước 2** để liên kết tài khoản Drive lưu trữ.
-4. **Tải và xử lý:**
-   - **Tải link đơn lẻ:** Dán link (YouTube, Facebook, Torrent, hoặc link xem lại `.mpd`/`.m3u8` đã bắt được) vào ô cấu hình ở **Bước 3**.
-   - **Tải danh sách link phân mảnh (.m4s, .ts):** Dán danh sách link và tệp khởi tạo (init) vào **Bước 4**.
-   - **Tải chương trình xem lại từ kênh Live:** Nhập link Live gốc và chọn mốc giờ phát sóng (giờ Việt Nam) ở **Bước 5**.
-   - **Ghép nối video:** Thiết lập thư mục hoặc danh sách file cần ghép ở **Bước 6**.
+### Bước 4: Tải xuống và đồng bộ dữ liệu
+Thiết lập các tham số đầu vào tại biểu mẫu ở **Bước 3**:
+- `URL_INPUT`: Danh sách một hoặc nhiều liên kết cần tải (ngăn cách bằng dấu xuống dòng hoặc dấu phẩy).
+- `DRIVE_FOLDER`: Đường dẫn thư mục lưu trữ đích trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`).
+- `CUSTOM_FILENAME`: Đặt tên tệp tùy biến (để trống nếu muốn giữ nguyên tên gốc của tệp/video).
+- `PROXY_LIST`: Danh sách địa chỉ proxy (định dạng `IP:PORT:USER:PASS` hoặc `protocol://...`) nếu cần vượt tường lửa/chặn vùng.
+- `USE_ARIA2`: Bật hoặc tắt công cụ tăng tốc `aria2c`.
+- `CUSTOM_REFERER`: Tiêu đề `Referer` tùy biến cho các luồng stream yêu cầu nguồn tham chiếu.
 
----
+Nhấn nút thực thi để tiến trình tự động tải và chuyển giao tệp vào Google Drive.
 
-## 🏗️ Cấu trúc thư mục
+## Cấu trúc thư mục
 
-```
-ColabDrive_Downloader/
-├── ColabDrive_Downloader.ipynb  # Sổ tay Jupyter chính chạy trên Google Colab
-├── README.md                    # Tài liệu hướng dẫn sử dụng (File bạn đang xem)
-├── LICENSE                      # Giấy phép phần mềm (MIT)
-└── .gitignore                   # Cấu hình bỏ qua các tệp không cần thiết
+```text
+colab-drive/
+├── colab-drive.ipynb    # Sổ tay Jupyter chính thực thi trên Google Colab
+├── README.md            # Tài liệu hướng dẫn sử dụng và thông số kỹ thuật
+├── LICENSE              # Giấy phép phần mềm mã nguồn mở MIT
+└── .gitignore           # Danh mục loại trừ tệp tin hệ thống
 ```
 
----
+## Giấy phép
 
-## 📄 Giấy phép
-
-Dự án được phân phối theo giấy phép **MIT**. Xem chi tiết tại [LICENSE](LICENSE).
+Dự án được phân phối theo giấy phép mã nguồn mở MIT. Chi tiết vui lòng xem tệp [LICENSE](LICENSE).
