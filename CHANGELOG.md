@@ -2,8 +2,7 @@
 
 ## v2.2.2 — 30/10/2026 01:55
 
-- Thiết lập tài liệu quy tắc phát triển AGENTS.md tiếng Anh và chuẩn hóa Semantic Versioning.
-- Tinh chỉnh scripts/build.py độc lập, bổ sung constants.py và huy hiệu phiên bản v2.2.2.
+- **[7b576d8](https://github.com/huyvu2512/colab-drive/commit/7b576d85c64c406be08ec8c5e6fa7edce64a6df3)** Thiết lập tài liệu phát triển AGENTS.md bằng tiếng Anh và chuẩn hóa Semantic Versioning.
 
 ## v2.2.1 — 30/10/2026 01:45
 
