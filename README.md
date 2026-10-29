@@ -6,50 +6,48 @@ Hệ thống tự động hóa tải và đồng bộ tệp tin đa nguồn vào
 
 ## Tổng quan
 
-**Colab Drive** là giải pháp thực thi trên nền tảng Google Colab nhằm tối ưu hóa tốc độ tải xuống và đồng bộ trực tiếp dữ liệu đa phương tiện từ Internet vào Google Drive của người dùng mà không làm tiêu tốn băng thông máy trạm cá nhân.
+**Colab Drive** là giải pháp thực thi trên nền tảng Google Colab tích hợp các công cụ tải xuống hàng đầu thế giới nhằm tối ưu hóa tốc độ và chuyển dữ liệu đa nguồn trực tiếp vào Google Drive cá nhân mà không tiêu tốn băng thông máy trạm.
 
-Dự án được xây dựng với quy trình vận hành 4 bước mạch lạc: chuẩn bị môi trường, kiểm tra dung lượng lưu trữ, tiền kiểm tra thông số tệp tin (độ phân giải, dung lượng ước tính) và tải đồng bộ vào Google Drive.
+Hệ thống tự động nhận diện nguồn liên kết (URL Routing) để phân bổ engine tải tối ưu nhất:
+- **Google Drive (`drive.google.com`):** Tích hợp `gdown` tải tệp đơn lẻ (vượt qua màn hình xác nhận tệp quá lớn không thể quét virus) hoặc tải toàn bộ thư mục (Folder) từ Drive khác sang Drive của bạn.
+- **Nền tảng MEGA (`mega.nz`):** Tích hợp `megatools` tải trực tiếp dữ liệu từ đám mây MEGA.
+- **Mạng P2P BitTorrent / Magnet:** Tích hợp `aria2c` đa luồng kết hợp DHT và danh sách OpenTrackers công cộng.
+- **Hơn 1.800 nền tảng mạng xã hội và phát trực tuyến:** Tích hợp `yt-dlp` kết hợp `aria2c` (YouTube, TikTok, Facebook, Douyin, Bilibili, VK, OK.ru, Vimeo, Twitch,... và các luồng HLS `.m3u8`, DASH `.mpd`).
+- **Liên kết tải trực tiếp (Direct Link):** Tự động phân luồng tải đa kết nối (`-x16 -s16`) cho mọi định dạng tệp (`.zip`, `.rar`, `.7z`, `.iso`, `.exe`, `.mp4`...).
 
-## Tính năng nổi bật
+## Quy trình 4 bước chuẩn hóa
 
-- **Kiểm tra thông số trước khi tải (Pre-Inspection):** Tự động phân tích siêu dữ liệu (Metadata) của liên kết: đọc tiêu đề, độ phân giải tối ưu (4K, 1080p60, 2K,...), thời lượng phát và dung lượng ước tính trước khi thực sự tải xuống.
-- **Hỗ trợ đa nguồn toàn diện:** Tương thích với hơn 1.800 nền tảng trực tuyến (YouTube, Facebook, TikTok, Douyin, Bilibili, OK.ru, VK, Vimeo, Twitch,...), các luồng phát trực tiếp HLS (`.m3u8`), DASH (`.mpd`), liên kết tải trực tiếp (`.mp4`, `.mkv`, `.iso`, `.zip`,...) và giao thức chia sẻ tệp BitTorrent/Magnet link.
-- **Tự động duy trì phiên làm việc (Anti-Disconnect):** Tích hợp heartbeat script JavaScript tự động gửi tín hiệu giữ kết nối mỗi 60 giây, hạn chế tối đa việc Google Colab ngắt kết nối khi chuyển tab hoặc tải tệp dung lượng lớn trong thời gian dài.
-- **Kiểm soát dung lượng Google Drive (Storage Check):** Tự động đo đạc dung lượng khả dụng trên Google Drive trước và sau khi lưu trữ nhằm cảnh báo kịp thời nguy cơ tràn bộ nhớ.
-- **Nạp Cookie mở khóa chất lượng cao (Cookies Auth):** Cho phép truyền nội dung cookie hoặc tệp `cookies.txt` để tải video 4K, 1080p Premium, video giới hạn độ tuổi và nội dung yêu cầu đăng nhập tài khoản.
-- **Tự động tăng tốc truyền tải:** Mặc định kích hoạt bộ tăng tốc `aria2c` đa luồng (16 kết nối song song) kết hợp `yt-dlp`. Tự động chuyển đổi cơ chế sang native hoặc tải trực tiếp khi phát hiện máy chủ đích có giới hạn kết nối mà không cần người dùng can thiệp thủ công.
-- **Tự động gán đuôi tệp thông minh:** Khi đặt tên tệp tùy biến (ví dụ `name123`), hệ thống tự động nhận diện và gán đúng phần mở rộng gốc của tệp (`.mp4`, `.mpd`, `.mkv`, `.ts`,...) mà người dùng không cần gõ đuôi tệp.
-- **Định tuyến máy chủ ủy danh (Proxy):** Hỗ trợ danh sách proxy HTTP/HTTPS/SOCKS5 (có hoặc không có xác thực) với cơ chế xoay tua tuần tự (Round-Robin) giúp vượt qua các rào cản chặn địa lý (Geo-Block) và phân bổ đều lưu lượng.
-- **Tự động giải nén (Auto-Extract):** Tùy chọn tự động nhận diện và giải nén siêu tốc các tệp nén đa định dạng (`.zip`, `.rar`, `.7z`, `.tar`, `.gz`) thông qua công cụ `p7zip` trước khi đồng bộ lên Google Drive.
-- **Thông báo Telegram Bot:** Tự động gửi báo cáo tóm tắt tiến trình (số tệp tải thành công, danh sách tệp đã lưu, dung lượng còn lại) về tài khoản Telegram cá nhân khi hoàn tất tác vụ.
-- **Hệ thống nhật ký chuẩn mực:** Toàn bộ thông tin thực thi được hiển thị với dấu thời gian Việt Nam (UTC+7, `HH:MM:SS`), mã định danh phân hệ ôm sát gọn gàng và màu sắc ANSI chuyên nghiệp, không sử dụng biểu tượng cảm xúc.
+1. **Bước 1: Thiết lập môi trường và cài đặt các công cụ tải chuyên dụng**
+   - Tự động kích hoạt cơ chế chống ngắt kết nối (Anti-Disconnect).
+   - Cài đặt hệ sinh thái: `yt-dlp`, `gdown`, `aria2c`, `megatools`, `ffmpeg`, `p7zip-full`, `unrar`.
 
-## Hướng dẫn vận hành
+2. **Bước 2: Xác thực và kết nối Google Drive**
+   - Kết nối phân vùng lưu trữ Google Drive cá nhân (`/content/drive/MyDrive/`).
+   - Kiểm tra dung lượng đã dùng và dung lượng khả dụng trên Drive.
 
-### Bước 1: Thiết lập môi trường và cài đặt phụ thuộc
-Chạy ô **Bước 1** để hệ thống kích hoạt cơ chế chống ngắt kết nối (Anti-Disconnect) và tự động cài đặt `yt-dlp`, `aria2c`, `ffmpeg`, `p7zip-full`, `unrar`.
+3. **Bước 3: Nhập liên kết và kiểm tra thông tin nguồn (Pre-Inspection)**
+   - Nhập liên kết, proxy, referer, cookies nếu có.
+   - Hệ thống quét trước và báo cáo chi tiết thông số: Tiêu đề tệp/video, độ phân giải tối ưu (4K, 1080p60...), dung lượng ước tính và thời lượng phát trước khi tải.
 
-### Bước 2: Xác thực và kết nối Google Drive
-Chạy ô **Bước 2** để cấp quyền kết nối với phân vùng lưu trữ Google Drive cá nhân (`/content/drive/MyDrive/`) và kiểm tra dung lượng còn trống.
+4. **Bước 4: Cấu hình lưu trữ và tiến hành tải xuống**
+   - Tự đặt tên tệp (`TEN_FILE_TU_DAT` - tự động nhận diện và gán đúng đuôi gốc).
+   - Tùy chọn tự động giải nén file `.zip`, `.rar`, `.7z` (`TU_DONG_GIAI_NEN`).
+   - Tùy chọn nhận tin nhắn báo cáo qua Telegram Bot (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`).
+   - Bắt đầu tiến trình tải đa nguồn và đồng bộ trực tiếp vào Google Drive.
 
-### Bước 3: Nhập liên kết và kiểm tra thông tin nguồn
-Nhập thông tin tại biểu mẫu ở **Bước 3**:
-- `LINK_CAN_TAI`: Dán 1 hoặc nhiều liên kết cần tải (ngăn cách bằng dấu xuống dòng hoặc dấu phẩy).
-- `DANH_SACH_PROXY`: Danh sách địa chỉ proxy (phân cách bằng dấu phẩy, khoảng trắng, chấm phẩy hoặc xuống dòng).
-- `REFERER_VUOT_CHAN`: Tiêu đề `Referer` nguồn trang web gốc để vượt lỗi chặn tải 403 Forbidden.
-- `NOI_DUNG_COOKIE`: Dán nội dung chuỗi cookies hoặc đường dẫn tệp `cookies.txt` để mở khóa tải 4K/nội dung VIP.
+## Tham số cấu hình
 
-Chạy ô này: Hệ thống sẽ quét và in ra log thông tin chi tiết của từng liên kết (Tiêu đề, độ phân giải tối đa, thời lượng phát, dung lượng ước tính) để bạn kiểm tra trước khi tải.
-
-### Bước 4: Cấu hình lưu trữ và tiến hành tải xuống
-Thiết lập các tùy chọn lưu trữ tại **Bước 4**:
-- `THU_MUC_DRIVE`: Đường dẫn thư mục lưu trữ đích trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`).
-- `TEN_FILE_TU_DAT`: Đặt tên tệp tùy biến (ví dụ `name123`, hệ thống sẽ tự động gán đuôi định dạng gốc như `.mp4`, `.mpd`...). Để trống nếu muốn giữ nguyên tên gốc của video/tệp.
-- `TU_DONG_GIAI_NEN`: Bật tùy chọn tự động giải nén các tệp nén (`.zip`, `.rar`, `.7z`...) sau khi tải.
-- `TELEGRAM_BOT_TOKEN`: Token của Telegram Bot nhận thông báo (tùy chọn).
-- `TELEGRAM_CHAT_ID`: Chat ID của người nhận thông báo Telegram (tùy chọn).
-
-Nhấn nút thực thi ô **Bước 4** để tiến trình bắt đầu tải xuống tốc độ cao và chuyển giao dữ liệu vào Google Drive.
+| Tham số | Ý nghĩa |
+|---|---|
+| `LINK_CAN_TAI` | Dán 1 hoặc nhiều liên kết cần tải (phân cách bằng dấu xuống dòng hoặc dấu phẩy). |
+| `DANH_SACH_PROXY` | Danh sách proxy hỗ trợ xoay tua Round-Robin (phân cách bằng phẩy, chấm phẩy, khoảng trắng hoặc xuống dòng). |
+| `REFERER_VUOT_CHAN` | Nguồn trang web gốc để vượt lỗi chặn tải 403 Forbidden. |
+| `NOI_DUNG_COOKIE` | Dán chuỗi cookies hoặc đường dẫn tệp `cookies.txt` để mở khóa tải 4K/VIP. |
+| `THU_MUC_DRIVE` | Thư mục đích lưu trữ trên Google Drive (mặc định: `/content/drive/MyDrive/colab-drive`). |
+| `TEN_FILE_TU_DAT` | Đặt tên tệp tùy ý (hệ thống tự động gán đuôi định dạng gốc). Để trống sẽ lấy tên nguồn. |
+| `TU_DONG_GIAI_NEN` | Tự động giải nén các tệp nén đa định dạng trên đám mây trước khi chuyển vào Drive. |
+| `TELEGRAM_BOT_TOKEN` | Mã token bot Telegram nhận thông báo báo cáo kết quả. |
+| `TELEGRAM_CHAT_ID` | Mã ID chat Telegram nhận tin nhắn. |
 
 ## Cấu trúc thư mục
 
