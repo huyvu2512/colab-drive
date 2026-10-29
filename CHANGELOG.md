@@ -1,5 +1,10 @@
 # Lịch sử thay đổi
 
+## v2.2.4 — 30/10/2026 02:15
+
+- Bổ sung ảnh xem trước giao diện trực quan `assets/preview.png` vào tài liệu README.
+- Loại bỏ tệp cấu hình không cần thiết `.gitignore` để tinh gọn dự án.
+
 ## v2.2.3 — 30/10/2026 02:05
 
 - **[c858b2b](https://github.com/huyvu2512/colab-drive/commit/c858b2b7f9759a0973b9d1af8330eb6128351d66)** Tinh giản tiêu đề mô tả chính của dự án thành câu hành động trực diện.

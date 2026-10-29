@@ -9,7 +9,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/huyvu2512/colab-drive/blob/main/colab-drive.ipynb)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB)](https://www.python.org/)
 [![Deno](https://img.shields.io/badge/Deno-JS%20Runtime-black)](https://deno.land/)
-[![Version](https://img.shields.io/badge/Version-v2.2.3-red)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-v2.2.4-red)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![yt-dlp](https://img.shields.io/badge/Engine-yt--dlp-red)](https://github.com/yt-dlp/yt-dlp)
 [![aria2](https://img.shields.io/badge/Engine-aria2-blue)](https://github.com/aria2/aria2)
@@ -25,10 +25,16 @@
 
 ---
 
+<div align="center">
+  <img src="assets/preview.png" alt="Colab Drive Interface" width="100%">
+</div>
+
+---
+
 ## Introduction
 **Colab Drive** is an automated cloud download solution running on Google Colab, engineered to maximize transfer speeds from diverse Internet sources directly into your personal Google Drive without consuming local machine bandwidth or storage. Designed and developed by Huy Vu (@huyvu2512) with a focus on stream optimization, resilient task queue management, and deep integration of premium open-source download engines.
 
-Version **v2.2.0** supports flexible splitting of files into 2, 4, 6, 8, or 10 equal parts stored in dedicated folders. See [CHANGELOG.md](CHANGELOG.md) for full details.
+Version **v2.2.4** includes visual interface preview and streamlined project documentation. See [CHANGELOG.md](CHANGELOG.md) for full details.
 
 ---
 

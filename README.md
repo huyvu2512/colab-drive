@@ -9,7 +9,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/huyvu2512/colab-drive/blob/main/colab-drive.ipynb)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB)](https://www.python.org/)
 [![Deno](https://img.shields.io/badge/Deno-JS%20Runtime-black)](https://deno.land/)
-[![Version](https://img.shields.io/badge/Version-v2.2.3-red)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-v2.2.4-red)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![yt-dlp](https://img.shields.io/badge/Engine-yt--dlp-red)](https://github.com/yt-dlp/yt-dlp)
 [![aria2](https://img.shields.io/badge/Engine-aria2-blue)](https://github.com/aria2/aria2)
@@ -25,10 +25,16 @@
 
 ---
 
+<div align="center">
+  <img src="assets/preview.png" alt="Giao diện Colab Drive" width="100%">
+</div>
+
+---
+
 ## Giới thiệu
 **Colab Drive** là giải pháp tự động hóa thực thi trên nền tảng Google Colab, được thiết kế nhằm tối ưu hóa tốc độ tải và chuyển giao dữ liệu từ đa dạng các nguồn lưu trữ trên Internet trực tiếp vào Google Drive cá nhân mà không tiêu tốn băng thông hay dung lượng máy trạm. Sản phẩm được phát triển bởi Huy Vũ (@huyvu2512) với mục tiêu nghiên cứu chuyên sâu về tối ưu luồng truyền tải dữ liệu, quản lý hàng chờ chịu lỗi và tích hợp hệ sinh thái công cụ mã nguồn mở cao cấp.
 
-Phiên bản **v2.2.0** hỗ trợ chia đều tệp thành 2, 4, 6, 8 hoặc 10 phần tiện dụng và lưu trữ vào thư mục riêng biệt. Xem [CHANGELOG.md](CHANGELOG.md) để biết chi tiết.
+Phiên bản **v2.2.4** bổ sung ảnh xem trước giao diện trực quan và tối ưu hóa tài liệu dự án. Xem [CHANGELOG.md](CHANGELOG.md) để biết chi tiết.
 
 ---
 
